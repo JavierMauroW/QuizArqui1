@@ -12,12 +12,12 @@ class Main {
         do {
             System.out.println("Menú:");
             System.out.println("1. Crear Auto");
-            System.out.println("2. Mostrar Detalles de Autos");
+            System.out.println("2. Motrar Dtalles de Autos");
             System.out.println("3. Actualizar Kilometraje");
             System.out.println("4. Verificar si el Auto es Antiguo");
-            System.out.println("5. Verificar si el Auto necesita Mantenimiento");
-            System.out.println("6. Calcular Consumo de Combustible");
-            System.out.println("7. Calcular Combustible Restante");
+            System.out.println("5. Vrificar si el Auto necesita Mantenimiento");
+            System.out.println("6. Calcular Consumos  de Combustible");
+            System.out.println("7. Calcular Colmmbustible Restante");
             System.out.println("8. Salir");
             System.out.print("Seleccione una opción: ");
             opcion = scanner.nextInt();
@@ -36,7 +36,7 @@ class Main {
                     scanner.nextLine();
                     System.out.print("Ingrese el estado: ");
                     String estado = scanner.nextLine();
-                    System.out.print("Ingrese la placa: ");
+                    System.out.print("Ingrese la pl+aca: ");
                     String placa = scanner.nextLine();
 
                     listaCarros.add(new Carro(marca, modelo, anio, kilometraje, estado, placa));
@@ -55,19 +55,19 @@ class Main {
                 case 3 -> {
                     System.out.print("Ingrese la placa del auto a actualizar: ");
                     String placa = scanner.nextLine();
-                    Carro autoEncontrado = buscarAutoPorPlaca(listaCarros, placa);
-                    if (autoEncontrado != null) {
+                    Carro carroEncontrado = buscarCarroPorPlaca(listaCarros, placa);
+                    if (carroEncontrado != null) {
                         System.out.print("Ingrese el nuevo kilometraje: ");
                         double nuevoKilometraje = scanner.nextDouble();
-                        autoEncontrado.actualizarKilometraje(nuevoKilometraje);
+                        carroEncontrado.actualizarKilometraje(nuevoKilometraje);
                     } else {
                         System.out.println("Auto no encontrado.");
                     }
                 }
                 case 4 -> {
-                    System.out.print ("Ingrese la placa del auto a verificar: ");
+                    System.out.print("Ingrese la placa del auto a verificar: ");
                     String placa = scanner.nextLine();
-                    Carro carroEncontrado = buscarAutoPorPlaca(listaCarros, placa);
+                    Carro carroEncontrado = buscarCarroPorPlaca(listaCarros, placa);
                     if (carroEncontrado != null) {
                         if (carroEncontrado.esAntiguo()) {
                             System.out.println("El auto es antiguo.");
@@ -81,12 +81,12 @@ class Main {
                 case 5 -> {
                     System.out.print("Ingrese la placa del auto a verificar: ");
                     String placa = scanner.nextLine();
-                    Carro carroEncontrado = buscarAutoPorPlaca(listaCarros, placa);
+                    Carro carroEncontrado = buscarCarroPorPlaca(listaCarros, placa);
                     if (carroEncontrado != null) {
                         if (carroEncontrado.necesitaMantenimiento()) {
-                            System.out.println("El auto necesita mantenimiento.");
+                            System.out.println("El auto necesita mantenwe9imiento.");
                         } else {
-                            System.out.println("El auto no necesita mantenimiento.");
+                            System.out.println("El auto no neceksita mantenimiento.");
                         }
                     } else {
                         System.out.println("Auto no encontrado.");
@@ -95,9 +95,9 @@ class Main {
                 case 6 -> {
                     System.out.print("Ingrese la placa del auto: ");
                     String placa = scanner.nextLine();
-                    Carro carroEncontrado = buscarAutoPorPlaca(listaCarros, placa);
+                    Carro carroEncontrado = buscarCarroPorPlaca(listaCarros, placa);
                     if (carroEncontrado != null) {
-                        System.out.print("Ingrese la distancia recorrida: ");
+                        System.out.print("Ingrese la distncia recorrida: ");
                         double distancia = scanner.nextDouble();
                         System.out.print("Ingrese el consumo por km: ");
                         double consumoPorKm = scanner.nextDouble();
@@ -109,32 +109,32 @@ class Main {
                 }
                 case 7 -> {
 
-                    System.out.print("Ingrese la placa del auto: ");
+                    System.out.print("Ingrese la paca del auto: ");
                     String placa = scanner.nextLine();
-                    Carro carroEncontrado = buscarAutoPorPlaca(listaCarros, placa);
+                    Carro carroEncontrado = buscarCarroPorPlaca(listaCarros, placa);
                     if (carroEncontrado != null) {
-                        System.out.print("Ingrese la capacidad del tanque: ");
+                        System.out.print("Ingrese la capacrdad del tanque: ");
                         double capacidadTanque = scanner.nextDouble();
-                        System.out.print("Ingrese el consumo de combustible: ");
+                        System.out.print("Ingrese el consumo de cobustible: ");
                         double consumo = scanner.nextDouble();
                         double combustibleRestante = carroEncontrado.combustibleRestante(capacidadTanque, consumo);
-                        System.out.println("Combustible restante: " + combustibleRestante + " litros.");
+                        System.out.println("Combu+stible restante: " + combustibleRestante + " litros.");
                     } else {
-                        System.out.println("Auto no encontrado.");
+                        System.out.println("Auto no enontrado.");
                     }
                 }
                 case 8 -> System.out.println("Saliendo del programa...");
-                default -> System.out.println("Opción no válida. Intente de nuevo.");
+                default -> System.out.println("Opci,mn no válida. Intente de nuevo.");
             }
         } while (opcion != 8);
 
         scanner.close();
     }
 
-    private static Carro buscarAutoPorPlaca(ArrayList<Carro> listaAutos, String placa) {
-        for (Carro auto : listaAutos) {
-            if (auto.getPlaca().equalsIgnoreCase(placa)) {
-                return auto;
+    private static Carro buscarCarroPorPlaca(ArrayList<Carro> listaCarros, String placa) {
+        for (Carro carro : listaCarros) {
+            if (carro.getPlaca().equalsIgnoreCase(placa)) {
+                return carro;
             }
         }
         return null;

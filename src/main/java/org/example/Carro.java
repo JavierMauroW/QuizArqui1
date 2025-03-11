@@ -94,7 +94,7 @@ public void actualizarKilometraje(double nuevoKilometraje ){
     this.kilometraje  =nuevoKilometraje;
 }
     public boolean esAntiguo() {
-        return (2025 - anio) > 15; //
+        return (2025 - anio) > 15;
     }
 
     public boolean necesitaMantenimiento() {
